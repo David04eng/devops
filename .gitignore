@@ -1,0 +1,18 @@
+# Build outputs
+bin/
+obj/
+
+# IDE files
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache
+
+# Dependencies
+packages/
+*.nupkg
+
+# Otros
+*.log
+*.pyc
