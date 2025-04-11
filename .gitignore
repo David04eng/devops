@@ -1,0 +1,16 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build
+bin/
+obj/
+*.dll
+*.exe
+
+# Test results
+TestResults/
+
+# Otros archivos temporales
+*.log
