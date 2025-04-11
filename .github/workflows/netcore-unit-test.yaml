@@ -13,23 +13,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Check out repository code
         uses: actions/checkout@v2
 
-      - name: Setup .NET Core
+      - name: Set up .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '8.x'  # asegúrate que tu proyecto use esta versión
+          dotnet-version: '8.x'
 
       - name: Restore dependencies
         run: dotnet restore ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln
 
-      - name: Build
+      - name: Build the solution
         run: dotnet build ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln --configuration Release --no-restore
 
-      - name: Run tests
-        run: dotnet test ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.csproj --no-build --configuration Release --logger "trx;LogFileName=TestResults.trx"
-
+      - name: Run unit tests with report
+        run: dotnet test ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
+        
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
