@@ -22,16 +22,16 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Restore dependencies
-        run: dotnet restore ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln
+        run: dotnet restore ./ExploringActions2/netcore/ExploringActions2.sln
 
       - name: Build the solution
-        run: dotnet build ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln --configuration Release --no-restore
+        run: dotnet build ./ExploringActions2/netcore/ExploringActions2.sln --configuration Release --no-restore
 
       - name: Run unit tests with report
-        run: dotnet test ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
+        run: dotnet test ./ExploringActions2/netcore/TestExploringActions/TestExploringActions.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
         
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: TestResults
-          path: ./ExploringActions2/netcore/ExploringActions2/TestResults/TestResults.trx
+          path: ./ExploringActions2/netcore/TestExploringActions/TestResults/TestResults.trx
