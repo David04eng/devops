@@ -13,31 +13,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Revisa el código del repositorio
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      # Configura .NET
       - name: Set up .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '8.x'
 
-      # Restaura las dependencias de la solución
       - name: Restore dependencies
-        run: dotnet restore ./netcore/ExploringActions2.sln
+        run: dotnet restore ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln
 
-      # Compila la solución
       - name: Build the solution
-        run: dotnet build ./netcore/ExploringActions2.sln --configuration Release --no-restore
+        run: dotnet build ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln --configuration Release --no-restore
 
-      # Ejecuta las pruebas unitarias
       - name: Run unit tests with report
-        run: dotnet test ./netcore/TestExploringActions/TestExploringActions.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
-        
-      # Sube los resultados de las pruebas
+        run: dotnet test ./ExploringActions2/netcore/ExploringActions2/TestExploringActions2/TestExploringActions2.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
+
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: TestResults
-          path: ./netcore/TestExploringActions/TestResults/TestResults.trx
+          path: ./ExploringActions2/netcore/ExploringActions2/TestExploringActions2/TestResults/TestResults.trx
+
