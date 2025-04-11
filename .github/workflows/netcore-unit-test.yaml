@@ -1,4 +1,4 @@
-name: CI - Unit Test
+name: .NET Core Unit Test
 
 on:
   push:
@@ -11,27 +11,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out repository code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up .NET
-        uses: actions/setup-dotnet@v3
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '8.x'
+          dotnet-version: '6.x' # o la versión que estés usando
 
       - name: Restore dependencies
         run: dotnet restore ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln
 
-      - name: Build the solution
-        run: dotnet build ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln --configuration Release --no-restore
+      - name: Build
+        run: dotnet build ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln
 
-      - name: Run unit tests with report
-        run: dotnet test ./ExploringActions2/netcore/TestExploringActions/TestExploringActions.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
+      - name: Run tests
+        run: dotnet test ./ExploringActions2/netcore/ExploringActions2/ExploringActions2.sln
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: TestResults
-          path: ./ExploringActions2/netcore/TestExploringActions/TestResults/TestResults.trx
