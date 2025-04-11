@@ -35,4 +35,3 @@ jobs:
         with:
           name: TestResults
           path: ./ExploringActions2/netcore/ExploringActions2/TestExploringActions2/TestResults/TestResults.trx
-
