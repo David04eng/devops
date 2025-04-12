@@ -29,9 +29,10 @@ jobs:
 
       - name: Run unit tests with report
         run: dotnet test ./netcore/ExploringActions/TestExploringActions/TestExploringActions.csproj --configuration Release --no-build --logger "trx;LogFileName=TestResults.trx"
-
+        
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: TestResults
-          path: ./netcore/ExploringActions/TestExploringActions/TestResults.trx
+          path: ./netcore/ExploringActions/TestExploringActions/TestResults/TestResults.trx
+
