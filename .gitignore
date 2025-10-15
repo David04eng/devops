@@ -1,0 +1,10 @@
+# Archivos de Terraform que no quieres subir
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+
+# Archivos temporales
+cp
+ec2.pub
+
