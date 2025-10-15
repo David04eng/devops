@@ -1,10 +1,7 @@
-# Carpeta de Terraform
+# Ignorar carpetas temporales de Terraform
 .terraform/
 .terraform.lock.hcl
 
-# Archivos temporales
+# Archivos temporales que no quieres subir
 cp
 ec2.pub
-
-# Ignora backup, pero no el principal
-terraform.tfstate.backup
